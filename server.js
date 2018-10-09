@@ -18,33 +18,32 @@ const Missions = require('./models/marsMissions')
 // views folder has not been created
 // views/missions folder has not been created
 
-
-
-// PORT
-const port = 3000;
-
 // DATA - put into marsMissions.js file inside of a models folder, for module.exports
 // remember to require it in the server
-
 
 // INDEX Route
 // send data to 'missions/index.ejs' view
 // the view should display just the names of each mission
 // display the mission names as <li> in a <ul> with the class name "missions"
 
+app.get('/missions', (req, res)=>{
+  res.render('index.ejs',{
+    missions: Missions
+  })
+})
+
 // SHOW Route
 // send data to 'missions/show.ejs' view
 // the view should display all the data for a single mission
 
-app.get('/missions', (req, res)=>{
-  res.send(Missions);
+app.get('/missions/:show', (req, res)=>{
+  res.render('missions/show.ejs',{
+    missions: Missions[req.params.show]
+  });
 })
-app.get('/missions/:index', (req, res)=>{
-  res.render('index.ejs')
-})
 
-
-
+// PORT
+const port = 3000;
 // LISTENER
 app.listen(port, function() {
   console.log('Missions to Mars running on port: ', port);

@@ -9,11 +9,9 @@
 <body>
 <h1>This is missions</h1>
 <ul class="missions">
-    <li><a href="missions/0">Spirit</a></li>
-    <li><a href="missions/1">Opportunity</a></li>
-    <li><a href="missions/2">Curiosity</a></li>
-    <li><a href="missions/3">Sojourner</a></li>
-    <li><a href="missions/4">Rosetta</a></li>
+    <% for(let i=0; i < missions.length; i++) { %>
+    <li><%= missions[i].name %></li>
+   <% } %>
 </ul>
 </body>
 </html>
